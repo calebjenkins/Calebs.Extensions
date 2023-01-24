@@ -4,7 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
-namespace PlayingWithEnumsLib
+namespace EnumTests
 {
 	public enum Options
 	{
