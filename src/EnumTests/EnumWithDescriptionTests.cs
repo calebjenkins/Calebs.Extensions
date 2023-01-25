@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using PlayingWithEnumsLib;
 using System;
+using Calebs.Extensions;
 
 namespace EnumTests
 {

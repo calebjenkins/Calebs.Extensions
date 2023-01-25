@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PlayingWithEnumsLib;
 using System;
 using SCM = System.ComponentModel;
+using Calebs.Extensions;
 
 namespace EnumTests
 {

@@ -1,9 +1,8 @@
-using EnumTests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PlayingWithEnumsLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Calebs.Extensions;
 
 namespace EnumTests;
 

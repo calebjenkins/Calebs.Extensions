@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 
-namespace PlayingWithEnumsLib;
+namespace Calebs.Extensions;
 
 public static class StringExtensions
 {
@@ -23,17 +22,5 @@ public static class StringExtensions
 			returnValue = string1.Equals(string2, StringComparison.CurrentCultureIgnoreCase);
 		}
 		return returnValue;
-	}
-	public static string ToDelimitedList(this List<string> list, string delimiter)
-	{
-		return string.Join(delimiter, list.ToArray());
-	}
-
-	public static void ToUpper(this List<string> list)
-	{
-		for (var i = 0; i < list.Count; i++)
-		{
-			list[i] = list[i].ToUpper();
-		}
 	}
 }

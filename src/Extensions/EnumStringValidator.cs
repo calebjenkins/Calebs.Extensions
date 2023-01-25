@@ -1,8 +1,7 @@
-using PlayingWithEnumsLib;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PlayingWithEnumsLib;
+namespace Calebs.Extensions;
 
 #if NET7_0_OR_GREATER
 
