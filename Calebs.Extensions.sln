@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1A709AF6-1C8B-46A3-B293-5A46E3DE4A85}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions", "src\Extensions\Extensions.csproj", "{FE75CCA0-71ED-4407-BA5C-DA5246E4F753}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnumTests", "src\EnumTests\EnumTests.csproj", "{E755C29F-1A48-47EA-A742-3070C908E6F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE75CCA0-71ED-4407-BA5C-DA5246E4F753}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE75CCA0-71ED-4407-BA5C-DA5246E4F753}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE75CCA0-71ED-4407-BA5C-DA5246E4F753}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE75CCA0-71ED-4407-BA5C-DA5246E4F753}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E755C29F-1A48-47EA-A742-3070C908E6F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E755C29F-1A48-47EA-A742-3070C908E6F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E755C29F-1A48-47EA-A742-3070C908E6F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E755C29F-1A48-47EA-A742-3070C908E6F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FE75CCA0-71ED-4407-BA5C-DA5246E4F753} = {1A709AF6-1C8B-46A3-B293-5A46E3DE4A85}
+		{E755C29F-1A48-47EA-A742-3070C908E6F0} = {1A709AF6-1C8B-46A3-B293-5A46E3DE4A85}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {04FC30FC-6DD3-4137-A1E2-6E7B322121DE}
+	EndGlobalSection
+EndGlobal
