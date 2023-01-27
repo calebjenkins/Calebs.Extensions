@@ -1,7 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Calebs.Extensions;
+namespace Calebs.Extensions
+{
 
 #if NET7_0_OR_GREATER
 
@@ -38,34 +39,35 @@ public class EnumStringValidatorAttribute<T> : ValidationAttribute where T : str
 }
 #endif
 
-[AttributeUsage(AttributeTargets.Property, AllowMultiple = true, Inherited = true)]
-public class EnumStringValidator : ValidationAttribute
-{
-    private Type enumType;
-    private bool ignoreCase;
-
-    public EnumStringValidator(Type EnumType, bool IgnoreCase = true)
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = true, Inherited = true)]
+    public class EnumStringValidator : ValidationAttribute
     {
-        enumType = (EnumType.IsEnum) ? EnumType : throw new ArgumentException(nameof(EnumType) + " must be an enum type");
-        ignoreCase = IgnoreCase;
-    }
+        private Type enumType;
+        private bool ignoreCase;
 
-    protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-    {
-        var fieldValue = value as string;
-        if (fieldValue.IsNullOrEmpty())
-            return null;
-
-        var fieldName = validationContext.MemberName;
-        var valueList = enumType.ToList();
-
-        if (ignoreCase)
+        public EnumStringValidator(Type EnumType, bool IgnoreCase = true)
         {
-            fieldValue = fieldValue.ToUpper();
-            valueList.ToUpper();
+            enumType = (EnumType.IsEnum) ? EnumType : throw new ArgumentException(nameof(EnumType) + " must be an enum type");
+            ignoreCase = IgnoreCase;
         }
 
-        var errMessage = (valueList.Contains(fieldValue)) ? string.Empty : $"{fieldName} was {fieldValue}, but must be set to one of these values: {valueList.ToDelimitedList(", ")}";
-        return (errMessage.IsNotNullOrEmpty()) ? new ValidationResult(errMessage) : null;
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            var fieldValue = value as string;
+            if (fieldValue.IsNullOrEmpty())
+                return null;
+
+            var fieldName = validationContext.MemberName;
+            var valueList = enumType.ToList();
+
+            if (ignoreCase)
+            {
+                fieldValue = fieldValue.ToUpper();
+                valueList.ToUpper();
+            }
+
+            var errMessage = (valueList.Contains(fieldValue)) ? string.Empty : $"{fieldName} was {fieldValue}, but must be set to one of these values: {valueList.ToDelimitedList(", ")}";
+            return (errMessage.IsNotNullOrEmpty()) ? new ValidationResult(errMessage) : null;
+        }
     }
 }

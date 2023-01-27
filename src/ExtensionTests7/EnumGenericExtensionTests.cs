@@ -1,90 +1,97 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+namespace ExtensionTests7;
+
 using Calebs.Extensions;
 
-namespace EnumTests;
 
-[TestClass]
+
 public class EnumGenericExtensionTests
 {
-    [TestMethod]
+    [Fact]
     public void ToList_Should_Return_A_List_of_Values()
     {
         var list = typeof(OptionsWithDescriptions).ToList();
-        Assert.IsNotNull(list);
+        list.Should().NotBeNull();
         var stringValue = list.ToDelimitedList(",");
+        list.Should().NotBeEmpty();
     }
 
-    [TestMethod]
+    [Fact]
     public void Non_Enum_Should_Throw_an_Exception()
     {
-        Assert.ThrowsException<ArgumentException>(() => typeof(int).ToList());
-        Assert.ThrowsException<ArgumentException>(() => typeof(string).ToList());
-        Assert.ThrowsException<ArgumentException>(() => typeof(object).ToList());
+
+        Action act = () => typeof(int).ToList();
+        act.Should().Throw<ArgumentException>();
+
+        act = () => typeof(int).ToList();
+        act.Should().Throw<ArgumentException>();
+
+        act = () => typeof(string).ToList();
+        act.Should().Throw<ArgumentException>();
+
+        act = () => typeof(object).ToList();
+        act.Should().Throw<ArgumentException>();
     }
 
-    [TestMethod]
+    [Fact]
     public void should_validate_property()
     {
         var sut = new ExampleClassGeneric() { Size = "blah" };
-        Assert.IsFalse(ModelValidation.IsValid(sut));
+        ModelValidation.IsValid(sut).Should().Be(false);
     }
 
-    [TestMethod]
+    [Fact]
     public void should_validate_found_property_to_true()
     {
         var sut = new ExampleClassGeneric() { Size = "Small" };
-        Assert.IsTrue(ModelValidation.IsValid(sut));
+        ModelValidation.IsValid(sut).Should().Be(true);
     }
 
-    [TestMethod]
+    [Fact]
     public void should_validate_property_even_if_case_is_off()
     {
         var sut = new ExampleClassGeneric() { Size = "sMall" };
-        Assert.IsTrue(ModelValidation.IsValid(sut));
+        ModelValidation.IsValid(sut).Should().Be(true);
     }
 
-    [TestMethod]
+    [Fact]
     public void should_validate_property_even_if_missing_but_not_required()
     {
         var sut = new ExampleClassGeneric() { Size = "" };
-        Assert.IsTrue(ModelValidation.IsValid(sut));
+        ModelValidation.IsValid(sut).Should().Be(true);
     }
 
-    [TestMethod]
+    [Fact]
     public void should_validate_when_required()
     {
         var sut = new RequiredPropertyClassGeneric() { Size = "" };
-        Assert.IsFalse(ModelValidation.IsValid(sut));
+        ModelValidation.IsValid(sut).Should().Be(false);
     }
 
-    [TestMethod]
+    [Fact]
     public void should_validate_when_required_and_populated()
     {
         var sut = new RequiredPropertyClassGeneric() { Size = "sMall" };
-        Assert.IsTrue(ModelValidation.IsValid(sut));
+        ModelValidation.IsValid(sut).Should().Be(true);
     }
 
-    [TestMethod]
+    [Fact]
     public void should_validate_when_required_and_populated_incorrectly()
     {
         var sut = new RequiredPropertyClassGeneric() { Size = "blah" };
-        Assert.IsFalse(ModelValidation.IsValid(sut));
+        ModelValidation.IsValid(sut).Should().Be(false);
     }
 
-    [TestMethod]
+    [Fact]
     public void should_validate_with_case_sensitivity_when_selected()
     {
         var sut = new CaseSensitivePropertyClassGeneric() { Size = "sMall" };
-        Assert.IsFalse(ModelValidation.IsValid(sut));
+        ModelValidation.IsValid(sut).Should().Be(false);
     }
-    [TestMethod]
+    [Fact]
     public void should_validate_with_case_sensitivity_when_selected_and_matches()
     {
         var sut = new CaseSensitivePropertyClassGeneric() { Size = "Small" };
-        Assert.IsTrue(ModelValidation.IsValid(sut));
+        ModelValidation.IsValid(sut).Should().Be(true);
     }
 }
 

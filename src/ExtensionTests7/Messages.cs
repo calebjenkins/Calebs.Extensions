@@ -4,7 +4,18 @@ using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
-namespace EnumTests;
+namespace ExtensionTests7;
+
+public class ModelValidation
+{
+    public static bool IsValid(object model)
+    {
+        var context = new ValidationContext(model, null, null);
+        var results = new List<ValidationResult>();
+
+        return Validator.TryValidateObject(model, context, results, true);
+    }
+}
 
 public enum Options
 {
