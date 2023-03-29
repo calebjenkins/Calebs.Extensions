@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <Configurations>Debug;Release;NET7</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

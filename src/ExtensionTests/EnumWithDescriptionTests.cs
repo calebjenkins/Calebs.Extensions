@@ -1,14 +1,12 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System;
 using Calebs.Extensions;
 
 namespace EnumTests;
 
-[TestClass]
 public class EnumWithDescriptionTests
 {
-	[TestMethod]
+	[Fact]
 	public void ShouldUseDescription()
 	{
 		var StartMsg = new MessageOptionsWithDescriptions() { Options = OptionsWithDescriptions.Large };
@@ -16,10 +14,11 @@ public class EnumWithDescriptionTests
 
 		var EndMsg = JsonConvert.DeserializeObject<MessageOptionsWithDescriptions>(msgJson);
 
-		Assert.AreEqual<string>(OptionsWithDescriptions.Large.ToString(), EndMsg.Options.ToString());
+		OptionsWithDescriptions.Large.ToString()
+			.Should().Be(EndMsg.Options.ToString());
 	}
 
-	[TestMethod]
+	[Fact]
 	public void ShouldUseDescriptionOrString()
 	{
 		var StartMsg = new MessageOptionsWithDescriptions() { Options = OptionsWithDescriptions.Large };
@@ -27,42 +26,45 @@ public class EnumWithDescriptionTests
 
 		var EndMsg = JsonConvert.DeserializeObject<MessageOptionsWithDescriptions>(msgJson);
 
-		Assert.AreEqual<string>(StartMsg.Options.ToString(), EndMsg.Options.ToString());
+		StartMsg.Options.ToString()
+			.Should().Be(EndMsg.Options.ToString());
 	}
 
-	[TestMethod]
+	[Fact]
 	public void ValidateToDescriptionExtension()
 	{
-		Assert.IsTrue("Largish".Compare(OptionsWithDescriptions.Large.Description()));
+		"Largish".Compare(OptionsWithDescriptions.Large.Description())
+			.Should().BeTrue();
 	}
 
-	[TestMethod]
-	public void ValidateToValueOrStringExtension()
+    [Fact]
+    public void ValidateToValueOrStringExtension()
 	{
-		Assert.IsTrue("Largish".Compare(OptionsWithDescriptions.Large.Description<System.ComponentModel.DescriptionAttribute>()));
+		"Largish".Compare(OptionsWithDescriptions.Large.Description<System.ComponentModel.DescriptionAttribute>())
+			.Should().BeTrue();
 	}
 
-	[TestMethod]
-	public void ValidateToValueOrStringExtension_With_Custom_Descriptor()
+    [Fact]
+    public void ValidateToValueOrStringExtension_With_Custom_Descriptor()
 	{
-		Assert.IsTrue("SuperSized".Compare(OptionsWithDescriptions.Large.Description<ValueForSystemX>()));
-		Assert.IsTrue("MuyBig".Compare(OptionsWithDescriptions.Large.Description<ValueForSystemY>()));
-		Assert.IsTrue("Largish".Compare(OptionsWithDescriptions.Large.Description()));
-		Assert.IsTrue("Large".Compare(OptionsWithDescriptions.Large.ToString()));
-	}
+		"SuperSized".Compare(OptionsWithDescriptions.Large.Description<ValueForSystemX>()).Should().BeTrue();
+		"MuyBig".Compare(OptionsWithDescriptions.Large.Description<ValueForSystemY>()).Should().BeTrue();
+        "Largish".Compare(OptionsWithDescriptions.Large.Description()).Should().BeTrue();
+        "Large".Compare(OptionsWithDescriptions.Large.ToString()).Should().BeTrue();
+    }
 
-	[TestMethod]
-	public void ValidateToValueOrStringExtension_With_CustomDescriptions_checking_vars()
+    [Fact]
+    public void ValidateToValueOrStringExtension_With_CustomDescriptions_checking_vars()
 	{
 		var option = OptionsWithDescriptions.Large;
-		Assert.IsTrue("SuperSized".Compare(option.Description<ValueForSystemX>()));
-		Assert.IsTrue("MuyBig".Compare(option.Description<ValueForSystemY>()));
-		Assert.IsTrue("Largish".Compare(option.Description()));
-	}
+		"SuperSized".Compare(option.Description<ValueForSystemX>()).Should().BeTrue();
+        "MuyBig".Compare(option.Description<ValueForSystemY>()).Should().BeTrue();
+        "Largish".Compare(option.Description()).Should().BeTrue();
+    }
 
-	[TestMethod]
-	public void ValidateToValueOrStringExtension_Uses_ToString_When_Descriptor_Is_Missing()
+    [Fact]
+    public void ValidateToValueOrStringExtension_Uses_ToString_When_Descriptor_Is_Missing()
 	{
-		Assert.IsTrue("Medium".Compare(OptionsWithDescriptions.Medium.Description<ValueForSystemX>()));
-	}
+		"Medium".Compare(OptionsWithDescriptions.Medium.Description<ValueForSystemX>()).Should().BeTrue();
+    }
 }
