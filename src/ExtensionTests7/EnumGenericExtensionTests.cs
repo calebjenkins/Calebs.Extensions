@@ -109,17 +109,17 @@ public class ExampleClassGeneric
 {
 
     [EnumStringValidator<OptionsWithDescriptions>()]
-    public string Size { get; set; }
+    public string Size { get; set; } = string.Empty;
 }
 
 public class RequiredPropertyClassGeneric
 {
     [Required(), EnumStringValidator<OptionsWithDescriptions>]
-    public string Size { get; set; }
+    public string Size { get; set; } = string.Empty;
 }
 
 public class CaseSensitivePropertyClassGeneric
 {
     [Required(), EnumStringValidator<OptionsWithDescriptions>(false)]
-    public string Size { get; set; }
+    public string Size { get; set; } = string.Empty;
 }

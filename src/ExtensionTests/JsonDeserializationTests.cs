@@ -21,12 +21,12 @@ public class JsonDeserializationTests
         m.Priority.Should().Be(ExampleEnum.Low);
     }
 
-    //[DataTestMethod]
-    //[DataRow(JSON)]
-    //[DataRow(JsonEnumAsString)]
-    //[DataRow(JsonEnumAsWord)]
-    ////[DataRow(JsonMissingEnum)]
-    //[DataRow(JsonExtraProperties)]
+    [Theory]
+    [InlineData(JSON)]
+    //[InlineData(JsonEnumAsString)]
+    //[InlineData(JsonEnumAsWord)]
+    ////[InlineData(JsonMissingEnum)]
+    //[InlineData(JsonExtraProperties)]
     public void ShouldDeserializeMultipleJsonFormatsToClass(string Json)
     {
         ExampleModel m = Json.FromJson<ExampleModel>();
@@ -49,11 +49,11 @@ public class JsonDeserializationTests
 
 public class ExampleModel
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public ExampleEnum Priority { get; set; }
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public ExampleEnum Priority { get; set; } = ExampleEnum.Default;
 }
 
 public record ExampleRecord(string FirstName, string LastName, ExampleEnum Priority);
-public enum ExampleEnum { High, Med, Low }
+public enum ExampleEnum { High, Med, Low, Default}
 

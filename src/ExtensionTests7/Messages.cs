@@ -76,7 +76,7 @@ public class MessageWithOptions1EnumWithAttribute
 
 public class MessageWithStringOptions
 {
-	public string Options { get; set; }
+	public string Options { get; set; } = string.Empty;
 }
 
 public class MessageWithEnumBacking
@@ -94,7 +94,7 @@ public class MessageWithEnumBacking
 	}
 
 	[JsonProperty("Options")]
-	public string _options { get; set; }
+	public string _options { get; set; } = string.Empty;
 }
 
 public class MessageWithEnumMemberOptions
