@@ -1,16 +1,39 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-    <Configurations>Debug;Release;NET7</Configurations>
+    <Configurations>Debug;Release;</Configurations>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="CustomAttribute.cs" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+		<Configurations>Debug;Release;NET7</Configurations>		
+		<RootNamespace>Calebs</RootNamespace>
+		<AssemblyName>Calebs.Extensions</AssemblyName>
+		<Version>0.1.0</Version>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Authors>Caleb Jenkins</Authors>
+		<Company>Caleb Jenkins</Company>
+		<Description>a library of useful extensions.</Description>
+		<Copyright>Copyright Caleb Jenkins</Copyright>
+		<PackageProjectUrl>https://github.com/calebjenkins/</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/calebjenkins/Calebs.Extensions</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>productivity;extensions</PackageTags>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageId>Calebs.Extensions</PackageId>
+		<PackageIconUrl />
+		<Product>Calebs.Extensions</Product>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<None Include="..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 </Project>
 

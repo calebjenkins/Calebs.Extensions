@@ -3,6 +3,7 @@ using Newtonsoft;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using Calebs.Extensions;
+using Newtonsoft.Json.Converters;
 
 namespace EnumTests
 {
@@ -11,11 +12,15 @@ namespace EnumTests
 		[Fact] // Passes Will FALSE (Fails)
 		public void SerializingWithStraightEnums()
 	{
-			//var converter = new Jason
+			// var converter = new Jason
 			var StartMsg = new MessageWithOptionsEnum() { Options = Options.Large };
-			var msgJson = JsonConvert.SerializeObject(StartMsg);
+			var msgJson = JsonConvert.SerializeObject(StartMsg, new StringEnumConverter());
 
 			var EndMsg = JsonConvert.DeserializeObject<MessageWithOptions2Enum>(msgJson);
+			var startToString = StartMsg.Options.ToString();
+			var endToString = EndMsg.Options.ToString();
+
+			startToString.Should().Be(endToString);
 
 			StartMsg.Options.ToString().Should().Be(EndMsg.Options.ToString());
 		}

@@ -1,5 +1,6 @@
 ﻿
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -33,6 +34,6 @@ public static class JsonExtensions
 
         // Type T = o.GetType();
         // return JsonSerializer.Serialize(o, T, options);
-        return JsonConvert.SerializeObject(o);
+        return JsonConvert.SerializeObject(o, new StringEnumConverter());
     }
 }

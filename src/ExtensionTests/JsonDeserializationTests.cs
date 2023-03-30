@@ -23,10 +23,9 @@ public class JsonDeserializationTests
 
     [Theory]
     [InlineData(JSON)]
-    //[InlineData(JsonEnumAsString)]
-    //[InlineData(JsonEnumAsWord)]
-    ////[InlineData(JsonMissingEnum)]
-    //[InlineData(JsonExtraProperties)]
+    //[InlineData(JsonEnumAsString)] // Fails.. needs to either be an index number or the word
+    [InlineData(JsonEnumAsWord)]
+    [InlineData(JsonExtraProperties)]
     public void ShouldDeserializeMultipleJsonFormatsToClass(string Json)
     {
         ExampleModel m = Json.FromJson<ExampleModel>();
@@ -34,6 +33,16 @@ public class JsonDeserializationTests
         m.FirstName.Should().Be("Caleb");
         m.LastName.Should().Be("Jenkins");
         m.Priority.Should().Be(ExampleEnum.Low);
+    }
+
+    [Fact]
+    public void MissingEnumShouldDefault()
+    {
+        ExampleModel m = JsonMissingEnum.FromJson<ExampleModel>();
+
+        m.FirstName.Should().Be("Caleb");
+        m.LastName.Should().Be("Jenkins");
+        m.Priority.Should().Be(ExampleEnum.Default);
     }
 
     [Fact]
