@@ -39,7 +39,9 @@ public enum OptionWithEnumMember
 	[EnumMember(Value = "Medium")]
 	Avg,
 	[EnumMember(Value = "Small")]
-	ReallyLittle
+	ReallyLittle,
+    [EnumMember(Value = "NoIdea")]
+    Unknown
 }
 
 public enum OptionsWithDescriptions
@@ -61,17 +63,17 @@ public enum OptionsWithDescriptions
 
 public class MessageWithOptionsEnum
 {
-	public Options Options { get; set; }
+	public Options Options { get; set; } = Options.Unknown;
 }
 
 public class MessageWithOptions2Enum
 {
-	public Options2 Options { get; set; }
+	public Options2 Options { get; set; } = Options2.Unknown;
 }
 public class MessageWithOptions1EnumWithAttribute
 {
 	[JsonConverter(typeof(StringEnumConverter))]
-	public Options Options { get; set; }
+	public Options Options { get; set; } = Options.Unknown;
 }
 
 public class MessageWithStringOptions
@@ -99,17 +101,17 @@ public class MessageWithEnumBacking
 
 public class MessageWithEnumMemberOptions
 {
-	public OptionWithEnumMember Options { get; set; }
+	public OptionWithEnumMember Options { get; set; } = OptionWithEnumMember.Unknown; 
 }
 
 public class MessageOptionsWithDescriptions
 {
-	public OptionsWithDescriptions Options { get; set; }
+	public OptionsWithDescriptions Options { get; set; } = OptionsWithDescriptions.Unknown;
 }
 
 public class MessageOptionsCustomAttributes
 {
-	public MessageOptionsCustomAttributes Options { get; set; }
+	public MessageOptionsCustomAttributes Options { get; set; } = new MessageOptionsCustomAttributes();
 }
 
 public class ValueForSystemX : DescriptionAttribute
