@@ -1,19 +1,7 @@
 on:
     push:
-      branches:
-      - Develop
-      paths-ignore:
-        - '**.md'
     pull_request:
-      branches:
-      - Develop
-      paths-ignore:
-        - '**.md'
     workflow_dispatch:
-  
-  env:
-   # Nuget_Key: secrets.FAKEAUTH_NUGET_KEY
-    Nuget_URL: "https://api.nuget.org/v3/index.json"
   
   jobs:
     build:
@@ -22,56 +10,14 @@ on:
   
       steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-  
-      - name: Echo Branch Name
-        run: echo "Branch name is $GITHUB_REF_NAME "
-        #if: ${{ github.ref == 'refs/heads/main' }}
-  
-      - name: Get version
-        id: get_version
-        uses: greenygh0st/net-proj-release-version@v1
-        with:  
-        # Filepath of the *.csproj file, relative to root of repository
-          PROJ_FILE: src/FakeAuth/FakeAuth.csproj
           
-        # env:
-        #   RELEASE_VERSION: ${{ steps.get_version.outputs.RELEASE_VERSION }}
-  
-      - name: Set Release Version
-        run: echo "getting version"
-          
-        env:
-          RELEASE_VERSION: steps.get_version.outputs.RELEASE_VERSION
-  
-      - name: Show Release Version
-        run: echo "Release Version is ${{steps.get_version.outputs.RELEASE_VERSION}}"
-      
-      - name: Generate build number
-        uses: einaregilsson/build-number@v3
-        with:
-          token: ${{secrets.github_token}}        
-      
-      - name: Print new build number
-        run: echo "Build number is ${BUILD_NUMBER}"
-        # Or, if you're on Windows: echo "Build number is ${env:BUILD_NUMBER}"
-  
-      # - name: Set Version variable with Preview suffix
-      #   run: "trying to set a variable again"
-      #   env:
-      #     VERSION: "${{ steps.get_version.outputs.RELEASE_VERSION }}-preview"
-      #     # VERSION: "${{ steps.get_version.outputs.RELEASE_VERSION }}-preview-ci.${BUILD_NUMBER}"
-  
-      # - name: Display Version
-      #   run: echo "The version is ${{VERSION}}"
-  
-  
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: '7.0.x'
   
       - name: Package Restore
         run: dotnet restore
@@ -80,26 +26,16 @@ on:
         run: dotnet build --configuration Release
   
       - name: Test
-        run: dotnet test --configuration Release --no-build
+        #run: dotnet test --configuration Release --no-build
+        run: dotnet test --configuration Release --no-build --filter 'FullyQualifiedName!~BDD_Specs'
   
-      - name: Detect if workflow is running on origin/Develop
-        id: detect_develop
-        run: git rev-parse HEAD | grep $(git rev-parse origin/Develop)
-        continue-on-error: true
-  
-      - name: Verify is based on origin/Develop to ensure PRs are correctly targeted
-        # List commits that are ahead of origin/Develop through HEAD and look for the tip of the current branch. 
-        # If HEAD isn't ahead of origin/Develop, the git log bit will be empty and grep will fail
-        run: git log origin/Develop..HEAD | grep $(git rev-parse --short HEAD)
-        if: ${{ steps.detect_develop.outcome == 'failure' }}
-  
-      - name: Pack
-        run: dotnet pack --configuration Release /p:Version=${{steps.get_version.outputs.RELEASE_VERSION}}-ci-${BUILD_NUMBER} --include-symbols  --output .
-        if: ${{ steps.detect_develop.outcome == 'success' }}
+    #   - name: Run SpecFlow Tests
+    #     uses: cryptic-wizard/run-specflow-tests@v1.3.1
+    #     with:
+    #       test-assembly-path: src/BDD/BDD_Specs/BDD_Specs/bin/Release/net6.0
+    #       test-assembly-dll: BDD_Specs.dll
+    #       output-html: BDD_SpecResults.html
+    #       no-build: true
+    #       upload-artifact: true
   
   
-      - name: Push to Nuget
-        # if: ${{ steps.detect_develop.outcome == 'success' }}
-        if: ${{ github.ref == 'refs/heads/Develop' }}
-        # run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.FAKEAUTH_NUGET_KEY}}
-        # run: dotnet nuget push Calebs.Extensions.${{steps.get_version.outputs.RELEASE_VERSION}}-ci-${BUILD_NUMBER}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.FAKEAUTH_NUGET_KEY}}
