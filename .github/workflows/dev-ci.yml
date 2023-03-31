@@ -63,7 +63,7 @@ jobs:
     
 
           - name: Print new build number
-            run: echo "Build number is $GITHUB_RUN_NUMBER
+            run: echo "Build number is $GITHUB_RUN_NUMBER "
             # Or, if you're on Windows: echo "Build number is ${env:BUILD_NUMBER}"
 
           
