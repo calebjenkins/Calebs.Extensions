@@ -22,4 +22,7 @@ Used for string properties in models that are supposed to conform to an enum val
 - ToDelimitedList
 - ToUpper
 
+## JsonExtensions
+- ToJson<T>
+- FromJson
 

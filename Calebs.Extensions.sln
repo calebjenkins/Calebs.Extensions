@@ -21,6 +21,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C4850C2D-38FD-45CD-B50E-A9A5C73FC1D5}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\dev-ci.yml = .github\workflows\dev-ci.yml
+		.github\workflows\main-publish.yml = .github\workflows\main-publish.yml
 	EndProjectSection
 EndProject
 Global
