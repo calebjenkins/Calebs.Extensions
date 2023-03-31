@@ -61,14 +61,9 @@ jobs:
           #- name: Show Release Version
           #  run: echo "Release Version is ${{steps.get_version.outputs.RELEASE_VERSION}}"
     
-          - name: Generate build number
-            uses: onyxmueller/build-tag-number@v1
-            with:
-                token: ${{secrets.github_token}}
-                prefix: "ci"
 
           - name: Print new build number
-            run: echo "Build number is $BUILD_NUMBER"
+            run: echo "Build number is $GITHUB_RUN_NUMBER
             # Or, if you're on Windows: echo "Build number is ${env:BUILD_NUMBER}"
 
           
