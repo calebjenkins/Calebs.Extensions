@@ -73,7 +73,7 @@ jobs:
 
           - name: Detect if workflow is running on origin/Develop
             id: detect_develop
-            run: git rev-parse HEAD | grep $(git rev-parse origin/Develop)
+            run: git rev-parse HEAD | grep $(git rev-parse origin/develop)
             continue-on-error: true
 
           - name: Verify is based on origin/Develop to ensure PRs are correctly targeted
@@ -89,7 +89,7 @@ jobs:
 
           - name: Push to Nuget
             # if: ${{ steps.detect_develop.outcome == 'success' }}
-            if: ${{ github.ref == 'refs/heads/Develop' }}
+            if: ${{ github.ref == 'refs/heads/develop' }}
             # run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.FAKEAUTH_NUGET_KEY}}
             run: dotnet nuget push Calebs.Extensions.${{steps.get_version.outputs.RELEASE_VERSION}}-ci-${GITHUB_RUN_NUMBER}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_KEY}}
 
