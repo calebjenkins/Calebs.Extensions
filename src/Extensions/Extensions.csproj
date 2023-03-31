@@ -8,7 +8,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 		<Configurations>Debug;Release;NET7</Configurations>		
-		<RootNamespace>Calebs</RootNamespace>
+		<RootNamespace>Calebs.Extensions</RootNamespace>
 		<AssemblyName>Calebs.Extensions</AssemblyName>
 		<Version>0.1.0</Version>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
