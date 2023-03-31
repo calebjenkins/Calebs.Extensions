@@ -52,6 +52,10 @@ jobs:
             # env:
             #   RELEASE_VERSION: ${{ steps.get_version.outputs.RELEASE_VERSION }}
 
+            
+          - name: Show Release Version
+            run: echo "Release Version is ${{steps.get_version.outputs.RELEASE_VERSION}}"
+
           - name: Set Release Version
             run: echo "getting version"
         
@@ -64,8 +68,29 @@ jobs:
 
           - name: Print new build number
             run: echo "Build number is $GITHUB_RUN_NUMBER "
-            # Or, if you're on Windows: echo "Build number is ${env:BUILD_NUMBER}"
+   
 
-          
+          - name: Detect if workflow is running on origin/Develop
+            id: detect_develop
+            run: git rev-parse HEAD | grep $(git rev-parse origin/Develop)
+            continue-on-error: true
+
+          - name: Verify is based on origin/Develop to ensure PRs are correctly targeted
+            # List commits that are ahead of origin/Develop through HEAD and look for the tip of the current branch. 
+            # If HEAD isn't ahead of origin/Develop, the git log bit will be empty and grep will fail
+            run: git log origin/Develop..HEAD | grep $(git rev-parse --short HEAD)
+            if: ${{ steps.detect_develop.outcome == 'failure' }}
+
+          - name: Pack
+            run: dotnet pack --configuration Release /p:Version=${{steps.get_version.outputs.RELEASE_VERSION}}-ci-${GITHUB_RUN_NUMBER} --include-symbols  --output .
+            if: ${{ steps.detect_develop.outcome == 'success' }}
+
+
+          - name: Push to Nuget
+            # if: ${{ steps.detect_develop.outcome == 'success' }}
+            if: ${{ github.ref == 'refs/heads/Develop' }}
+            # run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.FAKEAUTH_NUGET_KEY}}
+            run: dotnet nuget push Calebs.Extensions.${{steps.get_version.outputs.RELEASE_VERSION}}-ci-${GITHUB_RUN_NUMBER}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_KEY}}
+
 
  
