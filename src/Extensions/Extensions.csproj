@@ -10,7 +10,7 @@
 		<Configurations>Debug;Release;NET7</Configurations>		
 		<RootNamespace>Calebs.Extensions</RootNamespace>
 		<AssemblyName>Calebs.Extensions</AssemblyName>
-		<Version>1.0.0-beta</Version>
+		<Version>1.0.0</Version>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>Caleb Jenkins</Authors>
 		<Company>Caleb Jenkins</Company>
@@ -18,7 +18,7 @@
 		<Copyright>Copyright Caleb Jenkins</Copyright>
 		<PackageProjectUrl>https://github.com/calebjenkins/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/calebjenkins/Calebs.Extensions</RepositoryUrl>
-		<PackageReadmeFile>../../README.md</PackageReadmeFile>
+		<PackageReadmeFile>..\..\README.md</PackageReadmeFile>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>productivity;extensions</PackageTags>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
