@@ -1,8 +1,4 @@
-using Xunit;
-using Newtonsoft;
 using Newtonsoft.Json;
-using System.Diagnostics;
-using Calebs.Extensions;
 using Newtonsoft.Json.Converters;
 
 namespace EnumTests
