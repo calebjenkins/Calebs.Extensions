@@ -92,7 +92,7 @@ jobs:
 
           - name: Push to Nuget
             # if: ${{ steps.detect_branch.outcome == 'success' }}
-            if: ${{ github.ref == 'refs/heads/develop' }}
+            if: ${{ github.ref == 'refs/heads/main' }}
             # run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_KEY}}
             run: dotnet nuget push Calebs.Extensions.${{steps.get_version.outputs.RELEASE_VERSION}}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_KEY}}
 
