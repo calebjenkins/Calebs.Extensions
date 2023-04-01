@@ -7,7 +7,7 @@ public class JsonSerializationTests
     public void ShouldSerializeClasses()
     {
         var m = new ExampleModel() { FirstName = "Caleb", LastName = "Jenkins", Priority = ExampleEnum.Low };
-        var json = m.ToJason();
+        var json = m.ToJson();
 
         json.Should().Contain("Jenkins");
         json.Should().ContainAny($"\"FirstName\":\"Caleb\"");

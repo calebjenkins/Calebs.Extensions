@@ -21,7 +21,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C4850C2D-38FD-45CD-B50E-A9A5C73FC1D5}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\dev-ci.yml = .github\workflows\dev-ci.yml
+		.github\workflows\main-publish.yml = .github\workflows\main-publish.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionNugetTests7", "src\ExtensionsNugetTests7\ExtensionNugetTests7\ExtensionNugetTests7.csproj", "{AA463FE8-8ED4-4822-8280-B8EB9C72B2D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +44,10 @@ Global
 		{02637CBF-E1EE-4172-9633-F80F7CC953B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02637CBF-E1EE-4172-9633-F80F7CC953B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02637CBF-E1EE-4172-9633-F80F7CC953B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA463FE8-8ED4-4822-8280-B8EB9C72B2D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA463FE8-8ED4-4822-8280-B8EB9C72B2D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA463FE8-8ED4-4822-8280-B8EB9C72B2D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA463FE8-8ED4-4822-8280-B8EB9C72B2D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +57,7 @@ Global
 		{E755C29F-1A48-47EA-A742-3070C908E6F0} = {1A709AF6-1C8B-46A3-B293-5A46E3DE4A85}
 		{02637CBF-E1EE-4172-9633-F80F7CC953B6} = {1A709AF6-1C8B-46A3-B293-5A46E3DE4A85}
 		{C4850C2D-38FD-45CD-B50E-A9A5C73FC1D5} = {4316AA9F-ECF9-489D-B86B-E643AD24C6F1}
+		{AA463FE8-8ED4-4822-8280-B8EB9C72B2D8} = {1A709AF6-1C8B-46A3-B293-5A46E3DE4A85}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {04FC30FC-6DD3-4137-A1E2-6E7B322121DE}

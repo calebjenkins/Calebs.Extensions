@@ -1,8 +1,7 @@
-namespace ExtensionTests7;
-
 using Calebs.Extensions;
+using Calebs.Extensions.Validators;
 
-
+namespace ExtensionTests7;
 
 public class EnumGenericExtensionTests
 {

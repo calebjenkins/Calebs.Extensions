@@ -8,4 +8,4 @@ global using Xunit;
 global using FluentAssertions;
 global using Calebs.Extensions;
 global using EnumTests;
-// global using ExtensionTests7;
+global using ExtensionTests7;

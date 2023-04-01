@@ -1,9 +1,10 @@
 on:
     push:
         branches:
-            - 'develop'
+            - 'main'
         paths-ignore:
             - '**.md'
+            - '**.yml'
     workflow_dispatch:
 
 jobs:
@@ -78,22 +79,22 @@ jobs:
             run: git rev-parse HEAD | grep $(git rev-parse origin/develop)
             continue-on-error: true
 
-          - name: Verify is based on origin/Develop to ensure PRs are correctly targeted
+          - name: Verify is based on origin/main to ensure PRs are correctly targeted
             # List commits that are ahead of origin/Develop through HEAD and look for the tip of the current branch. 
             # If HEAD isn't ahead of origin/Develop, the git log bit will be empty and grep will fail
-            run: git log origin/Develop..HEAD | grep $(git rev-parse --short HEAD)
+            run: git log origin/main..HEAD | grep $(git rev-parse --short HEAD)
             if: ${{ steps.detect_develop.outcome == 'failure' }}
 
           - name: Pack
-            run: dotnet pack --configuration Release /p:Version=${{steps.get_version.outputs.RELEASE_VERSION}}-ci-${GITHUB_RUN_NUMBER} --include-symbols  --output .
+            run: dotnet pack --configuration Release /p:Version=${{steps.get_version.outputs.RELEASE_VERSION}} --include-symbols  --output .
             if: ${{ steps.detect_develop.outcome == 'success' }}
 
 
           - name: Push to Nuget
             # if: ${{ steps.detect_develop.outcome == 'success' }}
             if: ${{ github.ref == 'refs/heads/develop' }}
-            # run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.FAKEAUTH_NUGET_KEY}}
-            run: dotnet nuget push Calebs.Extensions.${{steps.get_version.outputs.RELEASE_VERSION}}-ci-${GITHUB_RUN_NUMBER}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_KEY}}
+            # run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_KEY}}
+            run: dotnet nuget push Calebs.Extensions.${{steps.get_version.outputs.RELEASE_VERSION}}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_KEY}}
 
 
  

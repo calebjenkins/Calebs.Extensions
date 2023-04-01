@@ -1,3 +1,5 @@
+using Calebs.Extensions.Validators;
+
 namespace EnumTests;
 
 public class EnumExtensionTests
@@ -101,19 +103,19 @@ public class ModelValidation
 public class ExampleClass
 {
 
-	[EnumStringValidator(typeof(OptionsWithDescriptions))]
+	[EnumStringValidatorAttribute(typeof(OptionsWithDescriptions))]
 	public string Size { get; set; }
 }
 
 public class RequiredPropertyClass
 {
-	[Required(), EnumStringValidator(typeof(OptionsWithDescriptions))]
+	[Required(), EnumStringValidatorAttribute(typeof(OptionsWithDescriptions))]
 	public string Size { get; set; }
 }
 
 public class CaseSensitivePropertyClass
 {
-	[Required(), EnumStringValidator(typeof(OptionsWithDescriptions), false)]
+	[Required(), EnumStringValidatorAttribute(typeof(OptionsWithDescriptions), false)]
 	public string Size { get; set; }
 }
 
