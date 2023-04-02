@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -13,7 +13,10 @@
     <Compile Include="..\..\ExtensionTests\EnumJSONSerializationTests.cs" Link="EnumJSONSerializationTests.cs" />
     <Compile Include="..\..\ExtensionTests\EnumParsingTests.cs" Link="EnumParsingTests.cs" />
     <Compile Include="..\..\ExtensionTests\EnumWithDescriptionTests.cs" Link="EnumWithDescriptionTests.cs" />
-    <Compile Include="..\..\ExtensionTests\JsonDeserializationTests.cs" Link="JsonDeserializationTests.cs" />
+    <Compile Include="..\..\ExtensionTests\ExampleModel.cs" Link="ExampleModel.cs" />
+    <Compile Include="..\..\ExtensionTests\ExampleStrings.cs" Link="ExampleStrings.cs" />
+    <Compile Include="..\..\ExtensionTests\JsonDeserializationToClassesTests.cs" Link="JsonDeserializationToClassesTests.cs" />
+    <Compile Include="..\..\ExtensionTests\JsonDeserializationToRecordsTests.cs" Link="JsonDeserializationToRecordsTests.cs" />
     <Compile Include="..\..\ExtensionTests\JsonSerializationTests.cs" Link="JsonSerializationTests.cs" />
   </ItemGroup>
 

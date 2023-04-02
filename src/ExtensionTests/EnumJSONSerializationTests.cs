@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace EnumTests
+namespace ExtensionTests
 {
 	public class EnumJSONSerializationTests
 	{

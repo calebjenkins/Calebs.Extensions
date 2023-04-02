@@ -2,7 +2,7 @@ using System;
 using SCM = System.ComponentModel;
 using Calebs.Extensions;
 
-namespace EnumTests
+namespace ExtensionTests
 {
 	public class EnumParsingTests
 	{
