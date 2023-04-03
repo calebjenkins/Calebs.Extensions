@@ -6,7 +6,12 @@ on:
             - '**.md'
 
     workflow_dispatch:
-
+        inputs:
+          PublishNuget:
+            type: boolean
+            description: Publish to nuget - defaults to true, but can be false for non-publishing scenarios. 
+            default: true
+      
 jobs:
     build:
       runs-on: ubuntu-latest
@@ -92,7 +97,8 @@ jobs:
 
           - name: Push to Nuget
             # if: ${{ steps.detect_branch.outcome == 'success' }}
-            if: ${{ github.ref == 'refs/heads/main' }}
+            if: ${{ (github.ref == 'refs/heads/main') && (github.event.inputs.PublishNuget)}}
+            # if: ${{ github.event.inputs.PublishNuget == 'true'}}
             # run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_KEY}}
             run: dotnet nuget push Calebs.Extensions.${{steps.get_version.outputs.RELEASE_VERSION}}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_KEY}}
 
