@@ -1,6 +1,6 @@
 using Calebs.Extensions.Validators;
 
-namespace EnumTests;
+namespace ExtensionTests;
 
 public class EnumExtensionTests
 {

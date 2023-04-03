@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using System;
 using Calebs.Extensions;
 
-namespace EnumTests;
+namespace ExtensionTests;
 
 public class EnumWithDescriptionTests
 {

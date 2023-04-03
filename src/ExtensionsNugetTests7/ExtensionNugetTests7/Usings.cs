@@ -7,5 +7,5 @@ global using System.Runtime.Serialization;
 global using Xunit;
 global using FluentAssertions;
 global using Calebs.Extensions;
-global using EnumTests;
+global using ExtensionTests;
 global using ExtensionTests7;

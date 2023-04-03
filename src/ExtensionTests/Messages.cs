@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Runtime.Serialization;
 using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
 
-namespace EnumTests
+namespace ExtensionTests
 {
 	public enum Options
 	{
