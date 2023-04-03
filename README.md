@@ -1,3 +1,8 @@
+[![.github/workflows/dev-ci.yml](https://github.com/calebjenkins/Calebs.Extensions/actions/workflows/dev-ci.yml/badge.svg?branch=develop)](https://github.com/calebjenkins/Calebs.Extensions/actions/workflows/dev-ci.yml)
+[![.github/workflows/main-publish.yml](https://github.com/calebjenkins/Calebs.Extensions/actions/workflows/main-publish.yml/badge.svg?branch=main)](https://github.com/calebjenkins/Calebs.Extensions/actions/workflows/main-publish.yml)
+[![NuGet](https://img.shields.io/nuget/dt/calebs.extensions.svg)](https://www.nuget.org/packages/calebs.extensions) 
+[![NuGet](https://img.shields.io/nuget/vpre/calebs.extensions.svg)](https://www.nuget.org/packages/calebs.extensions)
+
 # Calebs.Extensions
 Useful extension methods and attributes for working with enums, strings and lists. The majority of these extensions were born out of working with various models while building micro services. 
 
