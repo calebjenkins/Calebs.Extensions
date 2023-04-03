@@ -10,10 +10,11 @@ namespace ExtensionTests
 	{
 			// var converter = new Jason
 			var StartMsg = new MessageWithOptionsEnum() { Options = Options.Large };
-			var msgJson = JsonConvert.SerializeObject(StartMsg, new StringEnumConverter());
+		
+			var msgJson = StartMsg.ToJson();
+			var EndMsg = msgJson.FromJson<MessageWithOptions2Enum>();
 
-			var EndMsg = JsonConvert.DeserializeObject<MessageWithOptions2Enum>(msgJson);
-			var startToString = StartMsg.Options.ToString();
+            var startToString = StartMsg.Options.ToString();
 			var endToString = EndMsg.Options.ToString();
 
 			startToString.Should().Be(endToString);
@@ -25,20 +26,20 @@ namespace ExtensionTests
         public void SerializingWithEnumsBacking()
 		{
 			var StartMsg = new MessageWithEnumBacking () { Options = Options.Large };
-			var msgJson = JsonConvert.SerializeObject(StartMsg);
 
-			var EndMsg = JsonConvert.DeserializeObject<MessageWithOptions2Enum>(msgJson);
+            var msgJson = StartMsg.ToJson();
+            var EndMsg = msgJson.FromJson<MessageWithOptions2Enum>();
 
-			StartMsg.Options.ToString().Should().Be(EndMsg.Options.ToString());
+            StartMsg.Options.ToString().Should().Be(EndMsg.Options.ToString());
 		}
 
         [Fact] // This is much better. Using a Newtonsoft attribute on the enum, forces the ToString on the enum instead of the index
         public void SerializingWithStraightEnumsUsingJasonAttributes()
 		{
 			var StartMsg = new MessageWithOptions1EnumWithAttribute () { Options = Options.Large };
-			var msgJson = JsonConvert.SerializeObject(StartMsg);
 
-			var EndMsg = JsonConvert.DeserializeObject<MessageWithStringOptions>(msgJson);
+			var msgJson = StartMsg.ToJson();
+            var EndMsg = msgJson.FromJson<MessageWithStringOptions>();
 
             StartMsg.Options.ToString().Should().Be(EndMsg.Options.ToString());
 		}
@@ -47,12 +48,13 @@ namespace ExtensionTests
 		public void SerializingWithEnumMemberAttribute_DoesntWork_Enum_Serializes_Index_Instead_of_String()
 		{
 			var StartMsg = new MessageWithEnumMemberOptions() { Options = OptionWithEnumMember.Largish };
-			var msgJson = JsonConvert.SerializeObject(StartMsg);
+			
+			var msgJson = StartMsg.ToJson();
+			var EndMsg = msgJson.FromJson<MessageWithStringOptions>();
 
-			var EndMsg = JsonConvert.DeserializeObject<MessageWithStringOptions>(msgJson);
-
-            StartMsg.Options.ToString().Should().NotBe(EndMsg.Options.ToString());
-			EndMsg.Options.ToString().Should().Be("0");
+			StartMsg.Options.ToString().Should().Be("Largish");
+			// Maps to ..
+			EndMsg.Options.Should().Be("Large");
 		}
 	}
 }

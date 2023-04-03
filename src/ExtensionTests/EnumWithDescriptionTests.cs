@@ -10,9 +10,9 @@ public class EnumWithDescriptionTests
 	public void ShouldUseDescription()
 	{
 		var StartMsg = new MessageOptionsWithDescriptions() { Options = OptionsWithDescriptions.Large };
-		var msgJson = JsonConvert.SerializeObject(StartMsg);
+		var msgJson = StartMsg.ToJson();
 
-		var EndMsg = JsonConvert.DeserializeObject<MessageOptionsWithDescriptions>(msgJson);
+		var EndMsg = msgJson.FromJson<MessageOptionsWithDescriptions>();
 
 		OptionsWithDescriptions.Large.ToString()
 			.Should().Be(EndMsg.Options.ToString());
@@ -22,9 +22,9 @@ public class EnumWithDescriptionTests
 	public void ShouldUseDescriptionOrString()
 	{
 		var StartMsg = new MessageOptionsWithDescriptions() { Options = OptionsWithDescriptions.Large };
-		var msgJson = JsonConvert.SerializeObject(StartMsg);
-
-		var EndMsg = JsonConvert.DeserializeObject<MessageOptionsWithDescriptions>(msgJson);
+		
+		var msgJson = StartMsg.ToJson();
+		var EndMsg = msgJson.FromJson<MessageOptionsWithDescriptions>();
 
 		StartMsg.Options.ToString()
 			.Should().Be(EndMsg.Options.ToString());
