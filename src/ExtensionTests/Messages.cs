@@ -27,11 +27,14 @@ namespace ExtensionTests
 	public enum OptionWithEnumMember
 	{
 		[EnumMember(Value = "Large")]
+		[System.Text.Json.Serialization.JsonPropertyName("Large")]
 		Largish,
 		[EnumMember(Value = "Medium")]
-		Avg,
+
+        Avg,
 		[EnumMember(Value = "Small")]
-		ReallyLittle
+
+        ReallyLittle
 	}
 
 	public enum OptionsWithDescriptions
@@ -63,6 +66,7 @@ namespace ExtensionTests
 	public class MessageWithOptions1EnumWithAttribute
 	{
 		[JsonConverter(typeof(StringEnumConverter))]
+		[System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
 		public Options Options { get; set; }
 	}
 

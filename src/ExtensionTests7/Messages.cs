@@ -96,6 +96,7 @@ public class MessageWithEnumBacking
 	}
 
 	[JsonProperty("Options")]
+	[System.Text.Json.Serialization.JsonPropertyName("Options")]
 	public string _options { get; set; } = string.Empty;
 }
 

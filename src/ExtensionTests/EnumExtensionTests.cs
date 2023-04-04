@@ -103,19 +103,19 @@ public class ModelValidation
 public class ExampleClass
 {
 
-	[EnumStringValidatorAttribute(typeof(OptionsWithDescriptions))]
+	[EnumStringValidator(typeof(OptionsWithDescriptions))]
 	public string Size { get; set; } = string.Empty;
 }
 
 public class RequiredPropertyClass
 {
-	[Required(), EnumStringValidatorAttribute(typeof(OptionsWithDescriptions))]
+	[Required(), EnumStringValidator(typeof(OptionsWithDescriptions))]
 	public string Size { get; set; } = string.Empty;
 }
 
 public class CaseSensitivePropertyClass
 {
-	[Required(), EnumStringValidatorAttribute(typeof(OptionsWithDescriptions), false)]
+	[Required(), EnumStringValidator(typeof(OptionsWithDescriptions), false)]
 	public string Size { get; set; } = string.Empty;
 }
 
