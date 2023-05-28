@@ -20,11 +20,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionTests7", "src\Exte
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C4850C2D-38FD-45CD-B50E-A9A5C73FC1D5}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\ci.yml = .github\workflows\ci.yml
 		.github\workflows\dev-ci.yml = .github\workflows\dev-ci.yml
 		.github\workflows\main-publish.yml = .github\workflows\main-publish.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionNugetTests7", "src\ExtensionsNugetTests7\ExtensionNugetTests7\ExtensionNugetTests7.csproj", "{AA463FE8-8ED4-4822-8280-B8EB9C72B2D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionNugetTests7", "src\ExtensionsNugetTests7\ExtensionNugetTests7\ExtensionNugetTests7.csproj", "{AA463FE8-8ED4-4822-8280-B8EB9C72B2D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
