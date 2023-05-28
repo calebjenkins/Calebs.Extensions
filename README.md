@@ -2,7 +2,7 @@
 [![.github/workflows/main-publish.yml](https://github.com/calebjenkins/Calebs.Extensions/actions/workflows/main-publish.yml/badge.svg?branch=main)](https://github.com/calebjenkins/Calebs.Extensions/actions/workflows/main-publish.yml)
 [![NuGet](https://img.shields.io/nuget/dt/calebs.extensions.svg)](https://www.nuget.org/packages/calebs.extensions) 
 [![NuGet](https://img.shields.io/nuget/vpre/calebs.extensions.svg)](https://www.nuget.org/packages/calebs.extensions)
-
+[![.github/workflows/ci.yml](https://github.com/calebjenkins/Calebs.Extensions/actions/workflows/ci.yml/badge.svg)](https://github.com/calebjenkins/Calebs.Extensions/actions/workflows/ci.yml)
 # Calebs.Extensions
 Useful extension methods and attributes for working with enums, strings and lists. The majority of these extensions were born out of working with various models while building micro services. 
 
@@ -45,8 +45,9 @@ So instead of having your model directly bind to an enum - and throw a Bad Reque
 - Compare
 
 ## ListExtensions
-- ToDelimitedList 
+- ToDelimitedList
 - ToUpper
+- AddRange - `IList<T>.AddRange(IList<T>)`
 
 ## JsonExtensions
 For both of these extension methods I'm using the `Newtonsoft.Json` library. I'm planning on migrating to `System.Text.Json` as soon as it is viable. Right now, Newtonsoft is easeir to serialize enums to thier ToString() value rather than index, and to deserialize the same. For example, by default - an enum is serialized to the index of the value. So an enum with (High, Med, Low) values would otherwise be serialiezed to a 2, instead of to "Med". Serializing to "Med" is my prefered behavior. I will continue to evailuate `System.Text.Json` against these unit tests and most likely migrate at some point.
@@ -62,5 +63,5 @@ Merges to `deveoper` automtically run all unit tests and publish a nuget package
 Merges to `main` publish to nuget as a major release. 
 
 # Change Log
--
+-1.1.0 - added IList.AddRange extension method
 -

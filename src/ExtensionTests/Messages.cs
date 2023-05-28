@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System;
-using System.ComponentModel;
-using System.Runtime.Serialization;
+using SystemText = System.Text.Json.Serialization;
 using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
 
 namespace ExtensionTests
@@ -27,11 +25,14 @@ namespace ExtensionTests
 	public enum OptionWithEnumMember
 	{
 		[EnumMember(Value = "Large")]
+		[SystemText.JsonPropertyName("Large")]
 		Largish,
 		[EnumMember(Value = "Medium")]
-		Avg,
+
+        Avg,
 		[EnumMember(Value = "Small")]
-		ReallyLittle
+
+        ReallyLittle
 	}
 
 	public enum OptionsWithDescriptions
@@ -63,6 +64,7 @@ namespace ExtensionTests
 	public class MessageWithOptions1EnumWithAttribute
 	{
 		[JsonConverter(typeof(StringEnumConverter))]
+		[SystemText.JsonConverter(typeof(SystemText.JsonStringEnumConverter))]
 		public Options Options { get; set; }
 	}
 

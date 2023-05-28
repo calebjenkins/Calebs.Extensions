@@ -1,38 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="..\..\ExtensionTests7\EnumGenericExtensionTests.cs" Link="EnumGenericExtensionTests.cs" />
-    <Compile Include="..\..\ExtensionTests7\Messages.cs" Link="Messages.cs" />
-    <Compile Include="..\..\ExtensionTests\EnumExtensionTests.cs" Link="EnumExtensionTests.cs" />
-    <Compile Include="..\..\ExtensionTests\EnumJSONSerializationTests.cs" Link="EnumJSONSerializationTests.cs" />
-    <Compile Include="..\..\ExtensionTests\EnumParsingTests.cs" Link="EnumParsingTests.cs" />
-    <Compile Include="..\..\ExtensionTests\EnumWithDescriptionTests.cs" Link="EnumWithDescriptionTests.cs" />
-    <Compile Include="..\..\ExtensionTests\ExampleModel.cs" Link="ExampleModel.cs" />
-    <Compile Include="..\..\ExtensionTests\ExampleStrings.cs" Link="ExampleStrings.cs" />
-    <Compile Include="..\..\ExtensionTests\JsonDeserializationToClassesTests.cs" Link="JsonDeserializationToClassesTests.cs" />
-    <Compile Include="..\..\ExtensionTests\JsonDeserializationToRecordsTests.cs" Link="JsonDeserializationToRecordsTests.cs" />
-    <Compile Include="..\..\ExtensionTests\JsonSerializationTests.cs" Link="JsonSerializationTests.cs" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Include="..\..\ExtensionTests7\EnumGenericExtensionTests.cs" Link="EnumGenericExtensionTests.cs" />
+		<Compile Include="..\..\ExtensionTests7\Messages.cs" Link="Messages.cs" />
+		<Compile Include="..\..\ExtensionTests\EnumExtensionTests.cs" Link="EnumExtensionTests.cs" />
+		<Compile Include="..\..\ExtensionTests\EnumJSONSerializationTests.cs" Link="EnumJSONSerializationTests.cs" />
+		<Compile Include="..\..\ExtensionTests\EnumParsingTests.cs" Link="EnumParsingTests.cs" />
+		<Compile Include="..\..\ExtensionTests\EnumWithDescriptionTests.cs" Link="EnumWithDescriptionTests.cs" />
+		<Compile Include="..\..\ExtensionTests\ExampleModel.cs" Link="ExampleModel.cs" />
+		<Compile Include="..\..\ExtensionTests\ExampleStrings.cs" Link="ExampleStrings.cs" />
+		<Compile Include="..\..\ExtensionTests\JsonDeserializationToClassesTests.cs" Link="JsonDeserializationToClassesTests.cs" />
+		<Compile Include="..\..\ExtensionTests\JsonDeserializationToRecordsTests.cs" Link="JsonDeserializationToRecordsTests.cs" />
+		<Compile Include="..\..\ExtensionTests\JsonSerializationTests.cs" Link="JsonSerializationTests.cs" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Calebs.Extensions" Version="*-ci-*" />
-    <PackageReference Include="coverlet.collector" Version="3.2.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="FluentAssertions" Version="6.10.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0-preview-20230223-05" />
-    <PackageReference Include="xunit" Version="2.4.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Calebs.Extensions" Version="*-ci-*" />
+		<!--<PackageReference Include="Calebs.Extensions" Version="1.0.0" />-->
+		<PackageReference Include="coverlet.collector" Version="3.2.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="FluentAssertions" Version="6.10.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0-preview-20230223-05" />
+		<PackageReference Include="xunit" Version="2.4.2" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
 </Project>
