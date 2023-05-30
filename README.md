@@ -43,6 +43,7 @@ So instead of having your model directly bind to an enum - and throw a Bad Reque
 - IsNotNullOrEmpty
 - IsNullOrEmpty
 - Compare
+- string?.ValueOrEmpty()
 
 ## ListExtensions
 - ToDelimitedList
