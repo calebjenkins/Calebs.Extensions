@@ -23,4 +23,14 @@ public static class StringExtensions
         }
         return returnValue;
     }
+
+    public static string ValueOrEmpty(this string? value)
+    {
+        if (value.IsNullOrEmpty())
+        {
+            return string.Empty;
+
+        }
+        return value;
+    }
 }
