@@ -16,6 +16,5 @@ public interface IFileIO
     string ReadAllText (string path) => File.ReadAllText(path);
     bool FileExists(string path) => File.Exists(path);
     void WriteAllLines(string path, IEnumerable<string> lines) => File.WriteAllLines(path, lines);
-    string PathCombine(string path1, string path2) => Path.Combine(path1, path2);
     void DeleteFile(string path) => File.Delete(path);
 }

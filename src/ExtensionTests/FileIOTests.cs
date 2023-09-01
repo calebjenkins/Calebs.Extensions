@@ -1,5 +1,6 @@
 ﻿
 
+using System.IO;
 using System.Linq;
 
 namespace ExtensionTests;
@@ -67,27 +68,15 @@ public class FileIOTests
         result.Should().BeFalse();
     }
 
-    [Fact]
-    public void PathCombine_MadeUpFolders()
-    {
-        var result = _files.PathCombine("A:\\test", "picture");
-        result.Should().Be("A:\\test\\picture");
-    }
-
-    [Fact]
-    public void PathCombine_MadeUpLongerFolders()
-    {
-        var result = _files.PathCombine("A:\\test\\two\\three", "picture\\four");
-        result.Should().Be("A:\\test\\two\\three\\picture\\four");
-    }
-
-    [Fact]
-    public void PathCombine_MadeUpMoreFolders()
-    {
-        var result = System.IO.Path.Combine("test", "picture", "help");
-        result.Should().Be("test\\picture\\help");
-    }
 
     //Need WriteAllLines
     //Need DeleteFile
+
+    [Fact]
+    public void WriteAllLines()
+    {
+        // string settingsPath = Path.Combine(_hostingEnvironment.ContentRootPath, "AppData");
+        var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.Create);
+        folderPath.Length.Should().BeGreaterThan(1);
+    }
 }
