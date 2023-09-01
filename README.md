@@ -45,7 +45,7 @@ To use this helper - register `IFileIO` is your `DI` with `FileIO` as the implme
 - WriteAllLines(path, lines)
 - DeleteFile(path)
 
-# Extensions
+# Extension Methods
 
 ## EnumExtensions
 - ToList<D> - 
