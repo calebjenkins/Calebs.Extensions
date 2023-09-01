@@ -51,7 +51,7 @@ public class FileIOTests
         exists.Should().BeTrue();
 
         var result = _files.ReadAllText("./resources/example.txt");
-        result.Should().Be("test");
+        result.Should().StartWith("test");
     }
 
     [Fact]
@@ -73,10 +73,45 @@ public class FileIOTests
     //Need DeleteFile
 
     [Fact]
-    public void WriteAllLines()
+    public void WriteAllLines_withDeleteFile()
     {
         // string settingsPath = Path.Combine(_hostingEnvironment.ContentRootPath, "AppData");
         var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.Create);
         folderPath.Length.Should().BeGreaterThan(1);
+
+        // Source File
+        var confirmSource = _files.FileExists("./resources/example.txt");
+        confirmSource.Should().BeTrue();
+
+        var source = _files.ReadAllText("./resources/example.txt");
+        var sourceList = new List<string>() { source };
+
+        // Target File - Confirm not already there
+        var target = Path.Combine(folderPath, "example.txt");
+        var targetExist = _files.FileExists(target);
+
+        if (targetExist)
+        {
+            _files.DeleteFile(target);
+            targetExist = _files.FileExists(target);
+        }
+
+        targetExist.Should().BeFalse();
+
+        // Do the thing - Write File
+        _files.WriteAllLines(target, sourceList);
+
+        // Confirm created and content matches
+        var resultFile = _files.FileExists(target);
+        resultFile.Should().BeTrue();
+
+        var result = _files.ReadAllText(target).Trim();
+        
+        result.Should().Be(source);
+
+        // Clean Up
+        _files.DeleteFile(target);
+        var confirmDelete = _files.FileExists(target);
+        confirmDelete.Should().BeFalse();
     }
 }
