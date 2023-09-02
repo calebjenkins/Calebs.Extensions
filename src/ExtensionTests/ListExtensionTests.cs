@@ -30,7 +30,5 @@ public class ListExtensionTests
 
         l2.Count.Should().Be(2);
     }
-
-    
 }
 
