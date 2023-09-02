@@ -85,8 +85,8 @@ jobs:
             continue-on-error: true
 
           - name: Verify is based on origin/main to ensure PRs are correctly targeted
-            # List commits that are ahead of origin/Develop through HEAD and look for the tip of the current branch. 
-            # If HEAD isn't ahead of origin/Develop, the git log bit will be empty and grep will fail
+            # List commits that are ahead of origin/main through HEAD and look for the tip of the current branch. 
+            # If HEAD isn't ahead of origin/main, the git log bit will be empty and grep will fail
             run: git log origin/main..HEAD | grep $(git rev-parse --short HEAD)
             if: ${{ steps.detect_branch.outcome == 'failure' }}
 
@@ -96,7 +96,7 @@ jobs:
 
 
           - name: Push to Nuget
-            if: ${{ (github.ref == 'refs/heads/main') && ((github.event.inputs.PublishNuget == true) && (!contains(github.event.pull_request.title, 'no-publish'))) }}
+            if: ${{ (steps.detect_branch.outcome == 'success') && (github.event.inputs.PublishNuget == true) }}
             # if: ${{ (github.ref == 'refs/heads/main') && ((github.event.inputs.PublishNuget == true) && (!contains(github.event.pull_request.title, 'no-publish'))) }}
             # if: ${{ steps.detect_branch.outcome == 'success' }}
             # if: ${{ github.event.inputs.PublishNuget == 'true'}}
