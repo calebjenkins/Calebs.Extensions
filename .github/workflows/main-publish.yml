@@ -96,7 +96,7 @@ jobs:
 
 
           - name: Push to Nuget
-            if: ${{ (steps.detect_branch.outcome == 'success') && (github.event.inputs.PublishNuget == true) }}
+            if: ${{ (github.event.inputs.PublishNuget == true) }}
             # if: ${{ (github.ref == 'refs/heads/main') && ((github.event.inputs.PublishNuget == true) && (!contains(github.event.pull_request.title, 'no-publish'))) }}
             # if: ${{ steps.detect_branch.outcome == 'success' }}
             # if: ${{ github.event.inputs.PublishNuget == 'true'}}
