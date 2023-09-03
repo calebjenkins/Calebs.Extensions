@@ -94,8 +94,7 @@ jobs:
 
           - name: Push to Nuget
             # if: ${{ steps.detect_develop.outcome == 'success' }}
-            if: ( github.event_name == 'workflow_dispatch' && github.event.inputs.PublishNuget == 'true') || \
-                ( github.event_name == 'pull_request' && (!contains(github.event.pull_request.title, 'no-publish')))
+            if: ( github.event_name == 'workflow_dispatch' && github.event.inputs.PublishNuget == 'true') || ( github.event_name == 'pull_request' && (!contains(github.event.pull_request.title, 'no-publish')))
             # run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.FAKEAUTH_NUGET_KEY}}
             run: dotnet nuget push Calebs.Extensions.${{steps.get_version.outputs.RELEASE_VERSION}}-ci-${GITHUB_RUN_NUMBER}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_KEY}}
 
