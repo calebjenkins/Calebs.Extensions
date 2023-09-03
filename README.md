@@ -83,3 +83,4 @@ Merges to `main` publish to nuget as a major release.
 - 1.1.0 - added IList.AddRange extension method
 - 1.2.0 - never published - only preview
 - 1.3.0 - added IFileIO - an interface + implementation for making common filesystem opperations easier to test
+- 1.3.1 - suppressed some test warnings and updated the GH workflows
