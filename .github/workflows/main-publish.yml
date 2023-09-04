@@ -95,7 +95,7 @@ jobs:
 
             # workflow_dispatch  pull_request  push
           - name: Push to Nuget
-            if: ( github.event_name == 'workflow_dispatch' && github.event.inputs.PublishNuget == 'true') || ( github.event_name == 'pull_request' && (!contains(github.event.pull_request.title, 'no-publish') )
+            if: ( github.event_name == 'workflow_dispatch' && github.event.inputs.PublishNuget == 'true') || ( github.event_name == 'pull_request' && (!contains(github.event.pull_request.title, 'no-publish'))
             # if: ${{ (github.ref == 'refs/heads/main') && ((github.event.inputs.PublishNuget == true) && (!contains(github.event.pull_request.title, 'no-publish'))) }}
             # if: ${{ steps.detect_branch.outcome == 'success' }}
             # if: ${{ github.event.inputs.PublishNuget == 'true'}}
