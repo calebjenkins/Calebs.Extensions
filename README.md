@@ -44,6 +44,8 @@ To use this helper - register `IFileIO` is your `DI` with `FileIO` as the implme
 - FileExists(path)
 - WriteAllLines(path, lines)
 - DeleteFile(path)
+- CreateDirectory (path)
+- DeleteDirectory (path)
 
 # Extension Methods
 
@@ -82,5 +84,6 @@ Merges to `main` publish to nuget as a major release.
 # Change Log
 - 1.1.0 - added IList.AddRange extension method
 - 1.2.0 - never published - only preview
-- 1.3.0 - added IFileIO - an interface + implementation for making common filesystem opperations easier to test
+- 1.3.0 - added `IFileIO` - an interface + implementation for making common filesystem opperations easier to test
 - 1.3.1 - suppressed some test warnings and updated the GH workflows
+- 1.4.0 - added `CreatedDiretory` and `DeleteDirectory` to `IFileIO`

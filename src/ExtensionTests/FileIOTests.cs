@@ -68,10 +68,6 @@ public class FileIOTests
         result.Should().BeFalse();
     }
 
-
-    //Need WriteAllLines
-    //Need DeleteFile
-
     [Fact]
     public void WriteAllLines_withDeleteFile()
     {
@@ -113,5 +109,34 @@ public class FileIOTests
         _files.DeleteFile(target);
         var confirmDelete = _files.FileExists(target);
         confirmDelete.Should().BeFalse();
+    }
+
+    [Fact]
+    public void DirectoryTests()
+    {
+        var basePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.Create);
+        var TestDir = "TestIODir";
+        var dirPath = Path.Combine(basePath, TestDir);
+
+        var exists = _files.DirectoryExists(dirPath);
+        if(exists)
+        {
+            _files.DeleteDirectory(dirPath);
+            exists = _files.DirectoryExists(dirPath);
+        }
+        // Comnfirm Starting State
+        exists.Should().BeFalse();
+
+        // Create
+        _files.CreateDirectory(dirPath);
+        exists = _files.DirectoryExists(dirPath);
+        
+        // Confim Creation
+        exists.Should().BeTrue();
+
+        // CleanUp and Confim Delete
+        _files.DeleteDirectory(dirPath);
+        exists = _files.DirectoryExists(dirPath);
+        exists.Should().BeFalse();
     }
 }
