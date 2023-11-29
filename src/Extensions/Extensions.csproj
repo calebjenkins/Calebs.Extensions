@@ -10,7 +10,7 @@
 		<Configurations>Debug;Release;NET7</Configurations>		
 		<RootNamespace>Calebs.Extensions</RootNamespace>
 		<AssemblyName>Calebs.Extensions</AssemblyName>
-		<Version>1.4.0</Version>
+		<Version>1.5.0</Version>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>Caleb Jenkins</Authors>
 		<Company>Caleb Jenkins</Company>
