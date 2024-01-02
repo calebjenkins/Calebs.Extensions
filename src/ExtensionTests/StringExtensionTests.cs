@@ -27,4 +27,3 @@ public class StringExtensionTests
         v2.Should().Be(value);
     }
 }
-

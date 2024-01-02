@@ -10,7 +10,7 @@
 		<Configurations>Debug;Release;NET7</Configurations>		
 		<RootNamespace>Calebs.Extensions</RootNamespace>
 		<AssemblyName>Calebs.Extensions</AssemblyName>
-		<Version>1.4.0</Version>
+		<Version>1.5.0</Version>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>Caleb Jenkins</Authors>
 		<Company>Caleb Jenkins</Company>
@@ -25,12 +25,16 @@
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageId>Calebs.Extensions</PackageId>
-		<PackageIconUrl />
+		<PackageIcon>logo.png</PackageIcon>
 		<Product>Calebs.Extensions</Product>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<None Include="..\..\Assets\logo.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
 		<None Include="..\..\LICENSE">
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>

@@ -3,8 +3,11 @@
 [![NuGet](https://img.shields.io/nuget/dt/calebs.extensions.svg)](https://www.nuget.org/packages/calebs.extensions) 
 [![NuGet](https://img.shields.io/nuget/vpre/calebs.extensions.svg)](https://www.nuget.org/packages/calebs.extensions)
 [![.github/workflows/ci.yml](https://github.com/calebjenkins/Calebs.Extensions/actions/workflows/ci.yml/badge.svg)](https://github.com/calebjenkins/Calebs.Extensions/actions/workflows/ci.yml)
+
+![Extensions Logo](https://raw.githubusercontent.com/calebjenkins/Calebs.Extensions/develop/Assets/logo.png)
 # Calebs.Extensions
 Useful extension methods and attributes for working with enums, strings and lists. The majority of these extensions were born out of working with various models while building micro services. 
+
 
 ### Installing Calebs.Extensions
 
@@ -63,6 +66,9 @@ To use this helper - register `IFileIO` is your `DI` with `FileIO` as the implme
 - Compare
 - string?.ValueOrEmpty()
 
+## ObjectExtensions
+- ToSafeString()
+
 ## ListExtensions
 - ToDelimitedList
 - ToUpper
@@ -87,3 +93,4 @@ Merges to `main` publish to nuget as a major release.
 - 1.3.0 - added `IFileIO` - an interface + implementation for making common filesystem opperations easier to test
 - 1.3.1 - suppressed some test warnings and updated the GH workflows
 - 1.4.0 - added `CreatedDiretory` and `DeleteDirectory` to `IFileIO`
+- 1.5.0 - Added package logo and `ToSafeString` for `ObjectExtensions`
