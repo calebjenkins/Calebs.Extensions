@@ -66,6 +66,9 @@ To use this helper - register `IFileIO` is your `DI` with `FileIO` as the implme
 - Compare
 - string?.ValueOrEmpty()
 
+## ObjectExtensions
+- ToSafeString()
+
 ## ListExtensions
 - ToDelimitedList
 - ToUpper
@@ -90,3 +93,4 @@ Merges to `main` publish to nuget as a major release.
 - 1.3.0 - added `IFileIO` - an interface + implementation for making common filesystem opperations easier to test
 - 1.3.1 - suppressed some test warnings and updated the GH workflows
 - 1.4.0 - added `CreatedDiretory` and `DeleteDirectory` to `IFileIO`
+- 1.5.0 - Added package logo and `ToSafeString` for `ObjectExtensions`
