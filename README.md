@@ -60,6 +60,7 @@ To use this helper - register `IFileIO` is your `DI` with `FileIO` as the implme
 - Parse<T>
 - Parse <T, D>
 
+
 ## StringExtensions
 - IsNotNullOrEmpty
 - IsNullOrEmpty
@@ -73,6 +74,7 @@ To use this helper - register `IFileIO` is your `DI` with `FileIO` as the implme
 - ToDelimitedList
 - ToUpper
 - AddRange - `IList<T>.AddRange(IList<T>)`
+- AddUnlessBlank IList<string>.AddUnlessBlank(string)
 
 ## JsonExtensions
 For both of these extension methods I'm using the `Newtonsoft.Json` library. I'm planning on migrating to `System.Text.Json` as soon as it is viable. Right now, Newtonsoft is easeir to serialize enums to thier ToString() value rather than index, and to deserialize the same. For example, by default - an enum is serialized to the index of the value. So an enum with (High, Med, Low) values would otherwise be serialiezed to a 2, instead of to "Med". Serializing to "Med" is my prefered behavior. I will continue to evailuate `System.Text.Json` against these unit tests and most likely migrate at some point.
@@ -94,3 +96,4 @@ Merges to `main` publish to nuget as a major release.
 - 1.3.1 - suppressed some test warnings and updated the GH workflows
 - 1.4.0 - added `CreatedDiretory` and `DeleteDirectory` to `IFileIO`
 - 1.5.0 - Added package logo and `ToSafeString` for `ObjectExtensions`
+- 1.6.0 - Added AddUnlessBlank to list extensions
