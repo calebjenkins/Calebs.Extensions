@@ -18,6 +18,16 @@ public static class ListExtensions
         }
     }
 
+    public static void AddUnlessBlank(this IList<string> list, string value)
+    {
+        if(value.IsNullOrEmpty())
+        {
+            return;
+        }
+
+        list.Add(value);
+    }
+
     public static void AddRange<T>(this IList<T> list, IEnumerable<T> items)
     {
         if (list == null) throw new ArgumentNullException(nameof(list));

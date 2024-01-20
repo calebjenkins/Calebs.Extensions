@@ -30,5 +30,26 @@ public class ListExtensionTests
 
         l2.Count.Should().Be(2);
     }
+
+    [Fact]
+    public void AddUnlessBlank_shouldNotAddBlankItems()
+    {
+        var myList = new List<string>();
+
+        myList.AddUnlessBlank("one");
+        myList.AddUnlessBlank("two");
+        myList.AddUnlessBlank("three");
+
+        myList.Count.Should().Be(3);
+
+        myList.AddUnlessBlank(string.Empty);
+        myList.Count.Should().Be(3);
+
+        myList.AddUnlessBlank("");
+        myList.Count.Should().Be(3);
+
+        myList.AddUnlessBlank(null);
+        myList.Count.Should().Be(3);
+    }
 }
 
