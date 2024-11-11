@@ -41,6 +41,8 @@ The interface `IFileIO` - every method is so slim that they each have a default 
 To use this helper - register `IFileIO` is your `DI` with `FileIO` as the implmentation. For unit tests use something like `nSubstitute` to mock out and intercept interactions through `IFileIO` methods.
 
 - GetFiles(path, filter) // returns a string []
+- GetFileInfo(path)
+- GetFileAttributes(path)
 - DirectoryExists(path)
 - GetDirectoryName(path)
 - ReadAllText (path)
@@ -59,6 +61,9 @@ To use this helper - register `IFileIO` is your `DI` with `FileIO` as the implme
 - Description<ToDesc>(Enum)
 - Parse<T>
 - Parse <T, D>
+
+## IntExtensions
+- RandomText // For integers between 1 and 1000 -- returns a random string with that length
 
 
 ## StringExtensions
@@ -97,3 +102,4 @@ Merges to `main` publish to nuget as a major release.
 - 1.4.0 - added `CreatedDiretory` and `DeleteDirectory` to `IFileIO`
 - 1.5.0 - Added package logo and `ToSafeString` for `ObjectExtensions`
 - 1.6.0 - Added AddUnlessBlank to list extensions
+- 1.7.0 - Added `IntExtensions` and expanded `IFileIO` 

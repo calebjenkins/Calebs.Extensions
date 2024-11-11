@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using io = System.IO;
 
 
 namespace Calebs.Extensions.SystemIO;
@@ -10,13 +10,15 @@ namespace Calebs.Extensions.SystemIO;
 /// </summary>
 public interface IFileIO
 {
-    bool FileExists(string path) => File.Exists(path);
-    void DeleteFile(string path) => File.Delete(path);
-    string ReadAllText (string path) => File.ReadAllText(path);
-    void WriteAllLines(string path, IEnumerable<string> lines) => File.WriteAllLines(path, lines);
-    string[] GetFiles(string path, string filter = "") => Directory.GetFiles(path, filter);
-    bool DirectoryExists(string path) => Directory.Exists(path);
-    string GetDirectoryName(string path) => Path.GetDirectoryName(path);
-    void CreateDirectory(string path) => Directory.CreateDirectory(path);
-    void DeleteDirectory (string path) => Directory.Delete(path);
+    bool FileExists(string path) => io.File.Exists(path);
+    void DeleteFile(string path) => io.File.Delete(path);
+    string ReadAllText (string path) => io.File.ReadAllText(path);
+    void WriteAllLines(string path, IEnumerable<string> lines) => io.File.WriteAllLines(path, lines);
+    string[] GetFiles(string path, string filter = "") => io.Directory.GetFiles(path, filter);
+    io.FileAttributes GetFileAttributes(string path) => io.File.GetAttributes(path);
+    io.FileInfo GetFileInfo (string path) => new io.FileInfo(path);
+    bool DirectoryExists(string path) => io.Directory.Exists(path);
+    string GetDirectoryName(string path) => io.Path.GetDirectoryName(path);
+    void CreateDirectory(string path) => io.Directory.CreateDirectory(path);
+    void DeleteDirectory (string path) => io.Directory.Delete(path);
 }

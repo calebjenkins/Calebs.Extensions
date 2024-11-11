@@ -13,13 +13,14 @@ public class FileIOTests
     public void DirectoryExists_ShouldBeTrue()
     {
         var exists = _files.DirectoryExists("./");
-        exists.Should().BeTrue();
+        exists.Should().BeTrue();   
     }
 
     [Fact]
     public void DirectoryDoesNotExists_ShouldBeFalse()
     {
-        var exists = _files.DirectoryExists("./blah/");
+        var rndPath = $"./{6.RandomText()}";
+        var exists = _files.DirectoryExists(rndPath);
         exists.Should().BeFalse();
     }
 
@@ -35,6 +36,20 @@ public class FileIOTests
     {
         var results = _files.GetFiles("./", "Calebs.Extensions.dll");
         results.Count().Should().Be(1);
+    }
+
+    [Fact]
+    public void GetFileInfo()
+    {
+        var results = _files.GetFileInfo("./Calebs.Extensions.dll");
+        results.CreationTime.Ticks.Should().BeLessThan(DateTime.Now.Ticks);
+    }
+
+    [Fact]
+    public void GetAttributes()
+    {
+        var results = _files.GetFileAttributes("./Calebs.Extensions.dll");
+        results.Description().Count().Should().BeGreaterThan(0);
     }
 
     [Fact]
@@ -64,7 +79,7 @@ public class FileIOTests
     [Fact]
     public void FilesExists_DoesNotExist()
     {
-        var result = _files.FileExists("./blah");
+        var result = _files.FileExists("./blah.txt");
         result.Should().BeFalse();
     }
 
